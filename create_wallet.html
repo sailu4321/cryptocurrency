@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: url("https://img.freepik.com/free-vector/gradient-minimalist-background_23-2149974328.jpg?ga=GA1.1.1592376405.1744175617&semt=ais_hybrid&w=740") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    .card-body label {
+        color: #4A90E2 !important;
+        font-weight: bold;
+    }
+
+    /* Image click effect */
+    .image-container {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        perspective: 1000px;
+    }
+
+    .wallet-img {
+        width: 400px;
+        height: 300px;
+        border-radius: 10px;
+        transition: transform 1s;
+        backface-visibility: hidden;
+    }
+
+    .start-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 1s;
+        z-index: 1;
+    }
+
+    .rotated .wallet-img {
+        transform: rotateY(180deg);
+    }
+
+    .rotated .start-text {
+        opacity: 1;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <!-- Form Card -->
+        <div class="card bg-light mt-5 shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h2>Create New Wallet</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required><br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Wallet</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Crypto Image Section -->
+        <div class="text-center mt-4">
+            <div class="image-container" onclick="this.classList.toggle('rotated')">
+                <img src="{{ url_for('static', filename='Digital-Wallet.jpg') }}" alt="Digital Wallet" height="300" width="400" class="wallet-img">
+                <div class="start-text">Start your journey</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

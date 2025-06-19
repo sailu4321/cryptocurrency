@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: #fff;
+    }
+
+    .card {
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        text-align: center;
+    }
+
+    .card-body h3, .card-body h4, .card-body h5 {
+        color: #343a40;
+    }
+
+    .crypto-box {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        margin-bottom: 15px;
+        color: #000;
+    }
+
+    .btn-warning {
+        font-weight: bold;
+        border-radius: 10px;
+    }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card bg-light">
+            <div class="card-header bg-warning text-white">
+                <h2><i class="bi bi-person-badge-fill"></i> Profile</h2>
+            </div>
+            <div class="card-body">
+                <h3><i class="bi bi-person-circle"></i> Username: {{ wallet.username }}</h3>
+                <h3><i class="bi bi-key"></i> Address: {{ wallet.address }}</h3>
+
+                <h4 class="mt-4"><i class="bi bi-wallet2"></i> Wallet Balances</h4>
+
+                <div class="row text-center mt-3">
+                    <div class="col-6 col-md-6 col-lg-3">
+                        <div class="crypto-box">
+                            <strong>Bitcoin</strong><br>{{ balances['Bitcoin'] }}
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3">
+                        <div class="crypto-box">
+                            <strong>Ethereum</strong><br>{{ balances['Ethereum'] }}
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3">
+                        <div class="crypto-box">
+                            <strong>Litecoin</strong><br>{{ balances['Litecoin'] }}
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3">
+                        <div class="crypto-box">
+                            <strong>Ripple</strong><br>{{ balances['Ripple'] }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <h5><i class="bi bi-qr-code-scan"></i> QR Code</h5>
+                    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" class="img-fluid shadow rounded bg-white p-2" style="max-width: 300px;">
+                </div>
+
+                <div class="text-center">
+                    <a href="{{ url_for('main.dashboard') }}" class="btn btn-warning mt-4">
+                        <i class="bi bi-arrow-left-circle"></i> Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

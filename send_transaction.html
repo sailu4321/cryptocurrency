@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: url("https://img.freepik.com/free-photo/abstract-textured-backgound_1258-30510.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .glass-card {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        padding: 30px;
+        color: white;
+    }
+
+    .glass-card h2 {
+        background: linear-gradient(to right, #00ffff, #00ff99);
+        background-clip: text;
+       -webkit-background-clip: text;
+
+        
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    label {
+        color: #00ffff;
+        font-weight: bold;
+    }
+
+    .form-control {
+        border: 1px solid #00ffff;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 5px #00ffff;
+    }
+
+    .form-control::placeholder {
+        color: #cccccc;
+    }
+
+    .btn-send {
+        background: linear-gradient(to right, #00ff99, #00ffff);
+        border: none;
+        color: black;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 10px 20px;
+        width: 100%;
+        box-shadow: 0 0 10px #00ffff;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .btn-send:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to right, #00ffff, #00ff99);
+    }
+
+</style>
+
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <div class="glass-card">
+            <h2>🚀 Send Transaction</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="receiver_username">Receiver Username</label>
+                    <input type="text" class="form-control" id="receiver_username" name="receiver_username" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="receiver_address">Receiver Address</label>
+                    <input type="text" class="form-control" id="receiver_address" name="receiver_address" required placeholder="Enter wallet address">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" name="amount" step="0.01" required placeholder="Amount to send">
+                </div>
+                <div class="form-group">
+                    <label for="cryptocurrency_type">Cryptocurrency Type</label>
+                    <select class="form-control" id="cryptocurrency_type" name="cryptocurrency_type" required>
+                        <option value="bitcoin">Bitcoin</option>
+                        <option value="ethereum">Ethereum</option>
+                        <option value="litecoin">Litecoin</option>
+                        <option value="ripple">Ripple</option>
+                    </select>
+                </div><br>
+                <button type="submit" class="btn btn-send">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        background: url("https://cdn.pixabay.com/photo/2022/03/21/10/17/digitization-7082815_1280.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: #ffffff;
+    }
+
+    h2.text-center {
+        color: plum;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .card {
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid #007bff;
+        color: #333;
+    }
+
+    .transaction-id {
+        background-color: #d1c4e9;
+        color: #4a148c;
+        font-weight: bold;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .transaction-details {
+        background-color: #e3f2fd;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+    }
+
+    .transaction-details strong {
+        color: #0d47a1;
+    }
+
+    hr {
+        border-top: 1px solid #bbb;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #ff4081;
+        text-shadow: 1px 1px 2px black;
+    }
+</style>
+
+<div class="container">
+    <h2 class="text-center mt-4 gradient-heading">Transaction History</h2>
+
+    <div class="section-title">Sent Transactions</div>
+    <div class="row mt-2">
+        {% if sent_transactions %}
+            {% for transaction in sent_transactions %}
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-lg">
+                    <div class="card-body">
+                        <div class="transaction-id">
+                            Transaction ID: {{ transaction.id }}
+                        </div>
+                        <div class="transaction-details">
+                            <strong>To:</strong> {{ transaction.receiver_username }} <br>
+                            <strong>To Address:</strong> {{ transaction.receiver_address }} <br>
+                            <strong>Amount:</strong> {{ transaction.amount }} {{ transaction.cryptocurrency_type }} <br>
+                            <strong>Date:</strong> {{ transaction.timestamp }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-white">No sent transactions.</p>
+        {% endif %}
+    </div>
+
+    <div class="section-title mt-5">Received Transactions</div>
+    <div class="row mt-2">
+        {% if received_transactions %}
+            {% for transaction in received_transactions %}
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-lg">
+                    <div class="card-body">
+                        <div class="transaction-id">
+                            Transaction ID: {{ transaction.id }}
+                        </div>
+                        <div class="transaction-details">
+                            <strong>From:</strong> {{ transaction.sender_username }} <br>
+                            <strong>From Address:</strong> {{ transaction.sender_address }} <br>
+                            <strong>Amount:</strong> {{ transaction.amount }} {{ transaction.cryptocurrency_type }} <br>
+                            <strong>Date:</strong> {{ transaction.timestamp }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-white">No received transactions.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

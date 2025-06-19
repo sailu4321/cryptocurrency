@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: url("https://img.freepik.com/free-vector/bokeh-background_23-2148486863.jpg?ga=GA1.1.1592376405.1744175617&semt=ais_hybrid&w=740") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+    .card-body label {
+        color: #4A90E2 !important; /* Force color change even if overridden */
+        font-weight: bold;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card bg-light">
+            <div class="card-header bg-info text-white">
+                <h2>Load Existing Wallet</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required><br>
+                    </div>
+                    <button type="submit" class="btn btn-info">Load Wallet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

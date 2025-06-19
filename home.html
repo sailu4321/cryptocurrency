@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: url("https://cdn.pixabay.com/photo/2024/08/31/16/39/ai-generated-9011953_1280.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        margin-top: 100px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+    .card-title {
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+
+    .card-text {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        color: #dcdcdc;
+    }
+
+    .btn {
+        margin: 10px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border-radius: 10px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0d6efd;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary:hover {
+        background-color: #6c757d;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            margin-top: 60px;
+        }
+
+        .card-title {
+            font-size: 2rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card text-center p-4">
+            <div class="card-body">
+                <h1 class="card-title">Welcome to Crypto Wallet</h1>
+                <p class="card-text">A secure and user-friendly cryptocurrency wallet.</p>
+
+                <a href="{{ url_for('main.create_wallet') }}" class="btn btn-primary">Create New Wallet</a>
+                <a href="{{ url_for('main.load_wallet') }}" class="btn btn-secondary">Load Existing Wallet</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
